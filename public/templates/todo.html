@@ -1,13 +1,19 @@
-<p class="lead span9" data-id="{{ id }}">{{ task }}</p>
+<p class="lead span9" data-id="{{ id }}">{{#if done}}<del>{{/if}}{{ task }}{{#if done}}</del>{{/if}}</p>
 
-{{#unless done}}
-<form style="padding-right: 40px;" class="span1" method="post" action="/api/todos/{{ id }}">
+{{#if done}}
+<form style="padding-right: 40px;" class="undo-todo-form span1" method="post" action="/api/todos/{{ id }}">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="done" value="0">
+    <button type="submit" class="btn btn-success btn-small">Undo</button>
+</form>
+{{else}}
+<form style="padding-right: 40px;" class="do-todo-form span1" method="post" action="/api/todos/{{ id }}">
     <input type="hidden" name="_method" value="put">
     <input type="hidden" name="done" value="1">
     <button type="submit" class="btn btn-success btn-small">Done</button>
 </form>
-{{/unless}}
-<form class="span1" method="post" action="/api/todos/{{ id }}">
+{{/if}}
+<form class="delete-todo-form span1" method="post" action="/api/todos/{{ id }}">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" class="btn btn-danger btn-small" formaction="/api/todos/{{ id }}">Delete</button>
 </form>

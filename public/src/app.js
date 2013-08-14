@@ -11,7 +11,7 @@ var User = Backbone.Model.extend({
 });
 
 var Todo = Backbone.Model.extend({
-    url: '/api/todos'
+    rootUrl: '/api/todos'
 });
 
 var Todos = Backbone.Collection.extend({
@@ -22,7 +22,29 @@ var Todos = Backbone.Collection.extend({
 var TodoView = Marionette.ItemView.extend({
     tagName: 'div',
     className: 'row-fluid',
-    template: 'todo'
+    template: 'todo',
+    modelEvents: {
+        'sync': 'render'
+    },
+    events: {
+        'submit .undo-todo-form': 'onUndoTodoSubmit',
+        'submit .do-todo-form': 'onDoTodoSubmit',
+        'submit .delete-todo-form': 'onDeleteTodoSubmit'
+    },
+    onUndoTodoSubmit: function (e) {
+        e.preventDefault();
+        this.model.set('done', 0);
+        this.model.save();
+    },
+    onDoTodoSubmit: function (e) {
+        e.preventDefault();
+        this.model.set('done', 1);
+        this.model.save();
+    },
+    onDeleteTodoSubmit: function (e) {
+        e.preventDefault();
+        this.model.destroy();
+    }
 });
 
 var TodosListView = Marionette.CompositeView.extend({
