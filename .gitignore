@@ -12,3 +12,9 @@ logs
 results
 
 npm-debug.log
+.idea
+.idea_modules
+node_modules
+
+public/bower_components
+app.min.js
