@@ -16,7 +16,6 @@ helpers.register(Crawlable.Solidify.HandleBars, _);
 var host = 'http://localhost:3000';
 
 var crawlable = Crawlable.create({
-    Renderer: Crawlable.renderers.Casper,
     Cache: Crawlable.caches.NeDb,
     cacheOptions: {
         inMemoryOnly: true
@@ -146,6 +145,7 @@ crawlable.start(function (err) {
     });
 
     app.get('*', crawlable.express(), function (req, res) {
+//        console.log(req.headers['user-agent']);
         res.render('app.html', { staticApp: req.crawlable ? req.crawlable.html : '' });
     });
 
