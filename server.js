@@ -128,7 +128,7 @@ crawlable.start(function (err) {
         res.send(_.extend(todo, req.body));
     });
 
-    app.get('*', crawlable.express({ filter: function () { return false; }}), function (req, res) {
+    app.get('*', crawlable.express(), function (req, res) {
         res.render('app.html', { staticApp: req.crawlable ? req.crawlable.html : '' });
     });
 

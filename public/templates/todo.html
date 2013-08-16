@@ -1,19 +1,25 @@
-<p class="lead span9" data-id="{{ id }}">{{#if done}}<del>{{/if}}{{ task }}{{#if done}}</del>{{/if}}</p>
+{{#solidify "/api/todos"}}
+{{#solidify-each "this"}}
+{{solidify-html '<div class="row-fluid">'}}
+<p class="lead span9" data-id="{ { id } }">{ {#if done} }<del>{ {/if} }{ { task } }{ {#if done} }</del>{ {/if} }</p>
 
-{{#if done}}
-<form style="padding-right: 40px;" class="undo-todo-form span1" method="post" action="/api/todos/{{ id }}">
+{ {#if done} }
+<form style="padding-right: 40px;" class="undo-todo-form span1" method="post" action="/?undo={ { id } }">
     <input type="hidden" name="_method" value="put">
     <input type="hidden" name="done" value="0">
     <button type="submit" class="btn btn-success btn-small">Undo</button>
 </form>
-{{else}}
-<form style="padding-right: 40px;" class="do-todo-form span1" method="post" action="/api/todos/{{ id }}">
+{ {else} }
+<form style="padding-right: 40px;" class="do-todo-form span1" method="post" action="/?do={ { id } }">
     <input type="hidden" name="_method" value="put">
     <input type="hidden" name="done" value="1">
     <button type="submit" class="btn btn-success btn-small">Done</button>
 </form>
-{{/if}}
-<form class="delete-todo-form span1" method="post" action="/api/todos/{{ id }}">
+{ {/if} }
+<form class="delete-todo-form span1" method="post" action="/?delete={ { id } }">
     <input type="hidden" name="_method" value="delete">
-    <button type="submit" class="btn btn-danger btn-small" formaction="/api/todos/{{ id }}">Delete</button>
+    <button type="submit" class="btn btn-danger btn-small" formaction="/api/todos/{ { id } }">Delete</button>
 </form>
+{{solidify-html '</div>'}}
+{{/solidify-each}}
+{{/solidify}}

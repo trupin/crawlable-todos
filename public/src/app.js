@@ -4,7 +4,7 @@
  * Time: 11:20 AM
  */
 
-var app = app || new Marionette.Application();
+var app = new Marionette.Application();
 
 var User = Backbone.Model.extend({
     url: '/api/user'
