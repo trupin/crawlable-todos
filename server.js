@@ -64,7 +64,12 @@ crawlable.start(function (err) {
         if (!_.isString(req.body.name))
             return res.send(400);
 
-        res.send(_.extend(req.session.user, req.body));
+        _.extend(req.session.user, req.body);
+
+        if (req.query.redirect)
+            return res.redirect(req.query.redirect);
+
+        res.send(req.session.user);
     });
 
     app.get('/api/todos', function (req, res) {
@@ -95,6 +100,9 @@ crawlable.start(function (err) {
         req.body.done = false;
         req.session.todos[req.body.id] = req.body;
 
+        if (req.query.redirect)
+            return res.redirect(req.query.redirect);
+
         res.send(req.body);
     });
 
@@ -107,6 +115,10 @@ crawlable.start(function (err) {
             return res.send(404);
 
         req.session.todos = _.omit(req.session.todos, todo.id);
+
+        if (req.query.redirect)
+            return res.redirect(req.query.redirect);
+
         res.send(todo);
     });
 
@@ -125,7 +137,12 @@ crawlable.start(function (err) {
 
         req.body.lastUpdate = new Date();
 
-        res.send(_.extend(todo, req.body));
+        _.extend(todo, req.body);
+
+        if (req.query.redirect)
+            return res.redirect(req.query.redirect);
+
+        res.send(todo);
     });
 
     app.get('*', crawlable.express(), function (req, res) {
