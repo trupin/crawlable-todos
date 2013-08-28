@@ -3,7 +3,7 @@
 {{solidify-html '<div class="row-fluid">'}}
 <p class="lead span9" data-id="{ { id } }">{ {#if done} }<del>{ {/if} }{ { task } }{ {#if done} }</del>{ {/if} }</p>
 
-<form style="padding-right: 40px;" class="undo-todo-form span1" method="post" action="/api/todos/{ { id } }?redirect=/">
+<form style="padding-right: 40px;" class="{{#if done}}undo{{else}}do{{/if}}-todo-form span1" method="post" action="/api/todos/{ { id } }?redirect=/">
     <input type="hidden" name="_method" value="put">
 { {#if done} }
     <input type="hidden" name="done" value="0">
