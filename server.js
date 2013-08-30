@@ -13,7 +13,7 @@ var helpers = require('./public/src/helpers.js');
 
 helpers.register(Crawlable.Solidify.HandleBars, _);
 
-var host = 'http://localhost:3000';
+var host = 'http://localhost:' + (process.env.PORT || 5000);
 
 var crawlable = Crawlable.create({
     cacheOptions: {
