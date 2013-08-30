@@ -9,8 +9,6 @@
         "backbone.wreqr": "~0.2.0",
         "backbone.babysitter": "~0.0.6",
         "marionette": "~1.0.3",
-        "bootstrap": "https://github.com/bowerjs/bootstrap.git",
-        "solidify": "git@github.com:trupin/solidify.git#1.0.0",
-        "crawlable": "git@github.com:trupin/crawlable.git#1.0.0"
+        "bootstrap": "https://github.com/bowerjs/bootstrap.git"
     }
 }
