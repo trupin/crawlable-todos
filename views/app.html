@@ -12,6 +12,7 @@
 
 <div id="app">{{{ staticApp }}}</div>
 
+{{#unless noJs}}
 <!-- JS libraries -->
 <script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
 <script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
@@ -28,6 +29,7 @@
 <script type="text/javascript" src="src/customizations.js"></script>
 <script type="text/javascript" src="src/helpers.js"></script>
 <script type="text/javascript" src="src/app.js"></script>
+{{/unless}}
 
 </body>
 </html>

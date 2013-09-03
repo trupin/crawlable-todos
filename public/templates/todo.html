@@ -3,7 +3,7 @@
 {{solidify-html '<div class="row-fluid">'}}
 <p class="lead span9" data-id="{ { id } }">{ {#if done} }<del>{ {/if} }{ { task } }{ {#if done} }</del>{ {/if} }</p>
 
-<form style="padding-right: 40px;" class="{{#if done}}undo{{else}}do{{/if}}-todo-form span1" method="post" action="/api/todos/{ { id } }?redirect=/">
+<form style="padding-right: 40px;" class="{{#if done}}undo{{else}}do{{/if}}-todo-form span1" method="post" action="/api/todos/{ { id } }?redirect=/?noJs=true">
     <input type="hidden" name="_method" value="put">
 { {#if done} }
     <input type="hidden" name="done" value="0">
@@ -13,7 +13,7 @@
     <button type="submit" class="btn btn-success btn-small">Done</button>
 { {/if} }
 </form>
-<form class="delete-todo-form span1" method="post" action="/api/todos/{ { id } }?redirect=/">
+<form class="delete-todo-form span1" method="post" action="/api/todos/{ { id } }?redirect=/?noJs=true">
     <input type="hidden" name="_method" value="delete">
     <button type="submit" class="btn btn-danger btn-small">Delete</button>
 </form>

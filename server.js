@@ -11,7 +11,7 @@ var express = require('express'),
 
 var helpers = require('./public/src/helpers.js');
 
-helpers.register(Crawlable.Solidify.HandleBars, _);
+helpers.register(Crawlable.Solidify.HandleBars, _, true);
 
 var host = 'http://localhost:' + (process.env.PORT || 5000);
 
@@ -147,7 +147,10 @@ crawlable.start(function (err) {
         });
 
         app.get('*', crawlable.express(), function (req, res) {
-            res.render('app.html', { staticApp: req.crawlable ? req.crawlable.html : '' });
+            res.render('app.html', {
+                staticApp: req.crawlable ? req.crawlable.html : '',
+                noJs: !!req.query.noJs
+            });
         });
 
         app.listen(url.parse(host).port);

@@ -4,8 +4,10 @@
  * Time: 11:42 AM
  */
 
-var registerHelpers = function (HandleBars, _) {
-
+var registerHelpers = function (HandleBars, _, isCrawlable) {
+    HandleBars.registerHelper('toggle', function () {
+        return isCrawlable ? 'Try it with Javascript !' : 'Try it without Javascript !';
+    });
 };
 
 var window = window || null;

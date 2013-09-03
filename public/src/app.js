@@ -63,7 +63,8 @@ var TodosListView = Marionette.CompositeView.extend({
     },
     events: {
         'submit #user-form': 'onUserSubmit',
-        'submit #new-todo-form': 'onNewTodoSubmit'
+        'submit #new-todo-form': 'onNewTodoSubmit',
+        'submit #toggle-js-form': 'onToggleJsSubmit'
     },
     initialize: function () {
         this.model = new User();
@@ -86,13 +87,17 @@ var TodosListView = Marionette.CompositeView.extend({
         });
         this.collection.add(todo);
         this.ui.newTodoForm.find('input[name=task]').empty();
+    },
+    onToggleJsSubmit: function (e) {
+        e.preventDefault();
+        window.location.search += 'noJs=true';
     }
 });
 
 app.addInitializer(function () {
-    console.log('starting app.');
+    console.log('Starting app.');
 
-    registerHelpers(Handlebars, _);
+    registerHelpers(Handlebars, _, $.isCrawlable);
 
     this.addRegions({ container: 'div.container-fluid' });
 
@@ -108,5 +113,3 @@ $(document).ready(function () {
     app.start();
 
 });
-
-
