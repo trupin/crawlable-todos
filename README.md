@@ -1,14 +1,19 @@
 crawlable-todos
 ===============
 
-A short example to illustrate how to use crawlable.
+This is a short todo list example to illustrate how to use `Crawlable`, written with `Express`, `Backbone.Marionette` and `Crawlable`.
 
-Check it at this address: http://crawlable-todos.herokuapp.com/
+Try it at this address: http://crawlable-todos.herokuapp.com/
 
 Install
 -------
 
-`git clone git@github.com:trupin/crawlable-todos.git`
-`cd crawlable-todos`
-`npm install`
-`node server.js`
+You also can deploy it yourself like this:
+
+```
+  git clone git@github.com:trupin/crawlable-todos.git
+  cd crawlable-todos
+  npm install
+  node server.js
+```
+
