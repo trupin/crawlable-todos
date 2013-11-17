@@ -1,12 +1,10 @@
-crawlable-todos
-===============
+#crawlable-todos
 
 This is a short todo list example to illustrate how to use `Crawlable`, written with `Express`, `Backbone.Marionette` and `Crawlable`.
 
-Try it at this address: http://crawlable-todos.herokuapp.com/
+[Try it !](http://crawlable-todos.woam.me/)
 
-Install
--------
+##Install
 
 You also can deploy it yourself like this:
 
